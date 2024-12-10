@@ -1,0 +1,17 @@
+{
+  "name": "testapp2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chroma-js": "^3.1.1",
+    "leaflet": "^1.9.4",
+    "proj4leaflet": "^1.0.2"
+  }
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering EU-SPI (Interactive Data)</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Proj4 and Proj4leaflet -->
+    <script src="node_modules\proj4\dist\proj4.js" defer></script>
+    <script src="node_modules\proj4leaflet\src\proj4leaflet.js" defer></script>
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+
+    <!--Select2-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Local  -->
+    <script type="module" src="app4.js" async></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body style="margin: 0;">
+    <header role="banner">
+        <h1>EU-SPI Interactive Tools</h1>
+        <p>By Albert Busca</p>
+    </header>
+    <nav role="navigation">
+        <a>Introduction</a>
+        <a>Map</a>
+        <a>Cluster Charts</a>
+    </nav>
+    <section id="heroSection">
+        <img src="assets/bg-image.jpg" id="bg-image">
+        <div id="heroBackground">
+            <img src="assets/Vector 1.svg" id="vector1" class="vector">
+            <div id="heroBuffer"></div>
+            <img src="assets/Vector 2.svg" id="vector2" class="vector">
+        </div>
+        <h1 id="titleHero">EU-SPI Interactive Tools</h1>
+        <p id="parHero">Fostering data-driven decision for public policy makers and stakeholders</p>
+        <h1 id="titleHeroSection">About this page</h1>
+        <p id="parHeroSection">Scroll down to find various interactive tools based on the European Social Progress Index
+            by the European Commission. This tools and data are the result of a published paper authored by Albert Busca
+            and Albert Carreras that can be found here. We believe this page can be useful in understanding the findings
+            of the paper and to inform public policies with data, alongside helping to see social progress in a more
+            holistic manner.</p>
+    </section>
+    <section>
+        <div id="sectionBuffer"></div>
+        <h1 class="sectionTitle">Interactive Map</h1>
+        <div class="sectionLine"></div>
+        <p style="margin-left: 2.5%;">Select a region by clicking it on the map or change the variable to display. Click
+            on the button at the bottom of the control bar to know more information about the selected region.</p>
+        <div class="chartBox" id="controlMap">
+            <div id="map" role="application" aria-label="Interactive EU-SPI map at NUTS-2"></div>
+            <aside class="control" aria-labelledby="titleCB">
+                <h1 class="titleCB">Control Bar</h1>
+                <select id="selectCB">
+                    <optgroup label="Cluster Analysis">
+                        <option value="cluster">Cluster Membership</option>
+                    </optgroup>
+                    <optgroup label="Factors">
+                        <option value="ML1">Health (Factor 1)</option>
+                        <option value="ML2">Freedom and Housing (Factor 2)</option>
+                        <option value="ML3">Basic Education (Factor 3)</option>
+                        <option value="ML4">Socio-environmental Quality (Factor 4)</option>
+                    </optgroup>
+                    <optgroup label="Components">
+                        <option value="Nutrition.and.Basic.Medical.Care">Nutrition and Basic Medical Care</option>
+                        <option value="Water.and.Sanitation">Water and Sanitation</option>
+                        <option value="Shelter">Shelter</option>
+                        <option value="Personal.Security">Personal Security</option>
+                        <option value="Access.to.Basic.Knowledge">Access to Basic Knowledge</option>
+                        <option value="Access.to.ICT">Access to ICT</option>
+                        <option value="Health.and.Wellness">Health and Wellness</option>
+                        <option value="Environmental.Quality">Environmental Quality</option>
+                        <option value="Personal.Rights">Personal Rights</option>
+                        <option value="Personal.Freedom.and.Choice">Personal Freedom and Choice</option>
+                        <option value="Tolerance.and.Inclusion">Tolerance and Inclusion</option>
+                        <option value="Access.to.Advanced.Education">Access to Advanced Education</option>
+                    </optgroup>
+                </select>
+                <p class="pCB" id="barChartTitle">Component values for Burgenland</p>
+                <div id="barChartRegion"></div>
+                <p class="pCB">Legend:</p>
+                <div id="legendMap"></div>
+                <button id="regionLink">Detailed information for AT11</button>
+            </aside>
+        </div>
+    </section>
+    <div class="sectionBreak">
+        <h1>Cluster Profile</h1>
+    </div>
+    <section>
+        <h1 class="sectionTitle">Mean values by component</h1>
+        <div class="sectionLine"></div>
+        <div class="chartBox">
+            <div id="barChartCluster"></div>
+            <aside id="BCClegend">
+                <div class="legendCat">
+                    <div class="legendBox" style="background-color: #FE6162;"></div>
+                    <p>Cluster 1</p>
+                </div>
+                <div class="legendCat">
+                    <div class="legendBox" style="background-color: #6467FE;"></div>
+                    <p>Cluster 2</p>
+                </div>
+            </aside>
+        </div>
+    </section>
+    <section>
+        <h1 class="sectionTitle">Distribution of Health (Factor 1) by Cluster</h1>
+        <div class="sectionLine"></div>
+        <div class="chartBox">
+            <div id="boxPlotCluster"></div>
+            <aside class="control">
+                <h1 class="titleCB">Control Bar</h1>
+                <select id="propertySelectBoxPlot">
+                    <optgroup label="Factors">
+                        <option value="ML1">Health (Factor 1)</option>
+                        <option value="ML2">Freedom and Housing (Factor 2)</option>
+                        <option value="ML3">Basic Education (Factor 3)</option>
+                        <option value="ML4">Socio-environmental Quality (Factor 4)</option>
+                    </optgroup>
+                    <optgroup label="Components">
+                        <option value="Nutrition and Basic Medical Care">Nutrition and Basic Medical Care</option>
+                        <option value="Water and Sanitation">Water and Sanitation</option>
+                        <option value="Shelter">Shelter</option>
+                        <option value="Personal Security">Personal Security</option>
+                        <option value="Access to Basic Knowledge">Access to Basic Knowledge</option>
+                        <option value="Access to ICT">Access to ICT</option>
+                        <option value="Health and Wellness">Health and Wellness</option>
+                        <option value="Environmental Quality">Environmental Quality</option>
+                        <option value="Personal Rights">Personal Rights</option>
+                        <option value="Personal Freedom and Choice">Personal Freedom and Choice</option>
+                        <option value="Tolerance and Inclusion">Tolerance and Inclusion</option>
+                        <option value="Access to Advanced Education">Access to Advanced Education</option>
+                    </optgroup>
+                </select>
+                <fieldset style="width: 100%;">
+                    <p style="text-align: center;">Highlighted Regions</p>
+                    <div style="display: flex;">
+                        <div class="legendBox" style="background-color: #0B39A2;"></div>
+                        <select id="highlightReg1" style="width: 85%;">
+                            <option value="">Select a region</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="legendBox" style="background-color: #E6B800;"></div>
+                        <select id="highlightReg2" style="width: 85%;">
+                            <option value="">Select a region</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="legendBox" style="background-color: #00A174;"></div>
+                        <select id="highlightReg3" style="width: 85%;">
+                            <option value="">Select a region</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="legendBox" style="background-color: #FF8133;"></div>
+                        <select id="highlightReg4" style="width: 85%;">
+                            <option value="">Select a region</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="legendBox" style="background-color: #D7003D;"></div>
+                        <select id="highlightReg5" style="width: 85%;">
+                            <option value="">Select a region</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <div style="width: 100%;">
+                    <p style="text-align: center;">Legend</p>
+                    <div style="display: flex; gap: 5%; justify-content: center;">
+                        <div class="legendCat">
+                            <div class="legendBox" style="background-color: #FE6162;"></div>
+                            <p class="source-sans-regular">Cluster 1</p>
+                        </div>
+                        <div class="legendCat">
+                            <div class="legendBox" style="background-color: #6467FE;"></div>
+                            <p class="source-sans-regular">Cluster 2</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+    <section id="regionalCTA">
+        <img src="assets/region-image.jpg" id="region-image">
+        <div id="bg-color"></div>
+        <img src="assets/Vector 3.svg" id="vector3">
+        <h1 id="titleCTA">Regional Data</h1>
+        <ul class="whiteList">
+            <li>
+                <h2>Detailed insights</h2>
+            </li>
+            <li>
+                <h2>Compare regions</h2>
+            </li>
+            <li>
+                <h2>Understand patterns</h2>
+            </li>
+        </ul>
+        <button class="buttonCTA" id="buttonRegCTA">Go to regional data</button>
+
+    </section>
+    <footer>
+        <h1>Data Sources:</h1>
+        <ul class="whiteList">
+            <li>
+                <h3>EU-SPI data attributed to the European Commission. Original data can be found here under CC BY 4.0.
+                </h3>
+            </li>
+            <li>
+                <h3>Geographical data attributed to GISCO. Original data can be found here under CC BY 4.0.</h3>
+            </li>
+            <li>
+                <h3>GDP data attributed to EUROSTAT. Original data can be found here under CC BT 4.0.</h3>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

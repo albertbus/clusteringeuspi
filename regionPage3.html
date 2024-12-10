@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering EU-SPI (Regional data)</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Proj4 and Proj4leaflet -->
+    <script src="node_modules\proj4\dist\proj4.js" defer></script>
+    <script src="node_modules\proj4leaflet\src\proj4leaflet.js" defer></script>
+
+    <!--Plotly-->
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+
+    <!--App-->
+    <script type="module" src="regionApp3.js" async></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!--Select2-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body style="margin: 0;">
+    <header>
+        <h1>EU-SPI Interactive Tools</h1>
+        <p>By Albert Busca</p>
+    </header>
+    <div id="regionMap">
+        <div id="map" style="width: 100%; height: 100%;"></div>
+    </div>
+    <section id="regionHeader">
+        <div id="regionBanner">
+            <img id="countryFlag" style="height: 2.625rem;"
+                src="https://raw.githubusercontent.com/hampusborgos/country-flags/refs/heads/main/svg/es.svg">
+            <select id="regionName"></select>
+        </div>
+        <div id="NUTS-ID">
+            <p>NUTS ID:</p>
+            <p id="nutsId">ES52</p>
+        </div>
+    </section>
+    <section class="peerSection">
+        <h1 class="peerTitle">Peer Regions by Social Progress</h1>
+        <div class="peerDisplay">
+            <button id="SPI1"></button>
+            <button id="SPI2"></button>
+            <button id="SPI3"></button>
+        </div>
+        <div class="peerDisplay">
+            <button id="SPI4"></button>
+            <button id="SPI5"></button>
+        </div>
+    </section>
+    <section class="peerSection">
+        <h1 class="peerTitle">Peer Regions by GDP</h1>
+        <div class="peerDisplay">
+            <button id="GDP1"></button>
+            <button id="GDP2"></button>
+            <button id="GDP3"></button>
+        </div>
+        <div class="peerDisplay">
+            <button id="GDP4"></button>
+            <button id="GDP5"></button>
+        </div>
+    </section>
+    <section>
+        <div id="chartMenu">
+            <button class="menuButton selected" id="spiderChartButton">Spider Chart</button>
+            <button class="menuButton" id="barChartButton">Bar Chart</button>
+        </div>
+        <div id="chartContainer">
+            <div id="spiderChart"></div>
+            <div id="barChart" style="display: none;"></div>    
+        </div>
+    </section>
+</body>
+
+</html>
