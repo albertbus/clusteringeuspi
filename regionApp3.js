@@ -115,24 +115,89 @@ async function fetchNutsData() {
     return cacheNuts;
 }
 
+async function fetchMerge() {
+    return fetch('data/merge.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function extractRegions(clusterId, mergeMatrix) {
+    if (clusterId < 0) {
+        // If it's a region (negative ID), return its absolute value
+        return [Math.abs(clusterId)];
+    } else {
+        // If it's a cluster, recursively explore its components
+        const row = mergeMatrix[clusterId - 1]; // Adjust for 0-based indexing
+        return [
+            ...extractRegions(row[0], mergeMatrix),
+            ...extractRegions(row[1], mergeMatrix),
+        ];
+    }
+}
+
+function findClosestRegions(regionId, mergeMatrix, distanceMatrix) {
+    let searchValue = -regionId; // Start with the region as negative
+    let mergedRegions = [];     // To store found regions
+
+    for (let i = 0; i < mergeMatrix.length; i++) {
+        if (mergeMatrix[i].includes(searchValue)) {
+            // Identify the other element in the merge
+            const otherValue = mergeMatrix[i].find(value => value !== searchValue);
+
+            // Recursively extract regions from the other cluster or region
+            const newRegions = extractRegions(otherValue, mergeMatrix);
+            mergedRegions = [...new Set([...mergedRegions, ...newRegions])]; // Unique regions
+
+            // Filter by distance if more than 5 regions are found
+            if (mergedRegions.length > 5) {
+                // Ensure `mergedRegions` is numeric
+                mergedRegions = mergedRegions.map(Number);
+
+                // Extract distances
+                const distances = mergedRegions.map(region =>
+                    distanceMatrix[regionId - 1][region - 1] // Adjust for 0-based indexing
+                );
+
+                // Debugging print statements
+                console.log(
+                    `Distances from region ${regionId} to merged regions:`,
+                    distances
+                );
+
+                // Sort distances and select the closest regions
+                const sortedIndices = distances
+                    .map((distance, index) => ({ distance, index }))
+                    .sort((a, b) => a.distance - b.distance)
+                    .map(item => item.index);
+                mergedRegions = sortedIndices
+                    .slice(0, 5)
+                    .map(index => mergedRegions[index]);
+            }
+
+            // Update searchValue to the current cluster
+            searchValue = i + 1; // Adjust to match 1-based indexing of clusters
+
+            // Stop if we have 5 or more regions
+            if (mergedRegions.length >= 5) break;
+        }
+    }
+
+    return mergedRegions; // Return the closest 5 regions
+}
+
+
 async function getClosestRegions(n) {
     return new Promise((resolve) => {
-        Promise.all([fetchDistanceData(), fetchNutsData()]).then(([distanceData, nutsData]) => {
+        Promise.all([fetchDistanceData(), fetchNutsData(), fetchMerge()]).then(([distanceData, nutsData, mergeData]) => {
             regionData = nutsData.filter(d => d.NUTS_ID1 === regionName);
-
-            spiClosest = Object.entries(distanceData)
-                .find(([key, value]) => value[""] === regionData[0][""])[1]
-            spiClosest = Object.entries(spiClosest)
-                .reduce((acc, [key, dist]) => {
-                    const distance = parseFloat(dist);
-                    if (key && distance > 0) {
-                        acc.push({ index: parseInt(key, 10), distance });
-                    }
-                    return acc;
-                }, [])
-                .sort((a, b) => a.distance - b.distance)
-                .slice(0, n);
-
+            console.log(regionData[0][""]);
+            spiClosest = findClosestRegions(regionData[0][""], mergeData, distanceData);
+            console.log(spiClosest)
             gdpClosest = nutsData
                 .map(({ gdp, NUTS_ID1 }) => ({ gdp: parseFloat(gdp), NUTS_ID1 }))
                 .filter(({ NUTS_ID1 }) => NUTS_ID1 !== regionName)
@@ -178,8 +243,8 @@ function updatePage() {
         document.getElementById('nutsId').textContent = regionName;
 
         spiClosest.forEach((region, index) => {
-            const SPI = data.find(d => +d[""] === region["index"]);
-
+            const SPI = data[region - 1];
+            console.log(region, index, SPI);
             if (SPI) {
                 const rank = index + 1;
                 document.getElementById(`SPI${rank}`).textContent = `${SPI["Region name"]} (${SPI["NUTS_ID1"]})`;

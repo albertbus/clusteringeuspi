@@ -1,0 +1,442 @@
+:root {
+    --primary-color40: #9FB5EA;
+    --primary-color: #0E47CB;
+    --primary-color160: #0A328E;
+    --secondary-color: #FFCC00;
+    --secondary-color80: #FFD633;
+    --tertiary-color: #D4D5D7;
+    --tertiary-color40: #A8AAAF;
+    --font-primary: 'Source Sans 3', sans-serif;
+    --font-header: 'Merriweather', serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-header);
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2.25rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+p {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+}
+
+header {
+    position: relative;
+    height: 5%;
+    width: 95%;
+    background-color: var(--primary-color);
+    padding-right: 2.5%;
+    padding-left: 2.5%;
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+#heroSection {
+    position: relative;
+    padding-top: 30%;
+    min-height: 20vh;
+    height: fit-content;
+    width: 100%;
+    color: white;
+}
+
+#heroSection {
+    position: relative;
+    padding-top: 30%;
+    min-height: fit-content;
+    width: 100%;
+    color: white;
+}
+
+#image-container {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    top: -2.5vw;
+}
+
+#bg-image {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(80%);
+    position: relative;
+}
+
+#menu-button {
+    border: none;
+    background-color: transparent;
+}
+
+#menu-icon {
+    height: 100%;
+}
+
+#heroBackground {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 30vw;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+#heroBackground * {
+    width: 100%;
+}
+
+#vector4 {
+    margin-bottom: -5px;
+}
+
+#heroBuffer {
+    height: 480px;
+    top: 0;
+    background-color: var(--primary-color160);
+    margin-bottom: -2px;
+}
+
+#titleHero {
+    margin-left: 5%;
+    margin-bottom: 0;
+    width: 35%;
+}
+
+#titleHeroSection {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 7.5%;
+}
+
+#parHero {
+    width: 75%;
+    margin-left: 2.5%;
+    margin-top: 1%;
+    margin-bottom: 0;
+    text-align: left;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+#parHeroSection {
+    font-size: 1.25rem;
+}
+
+#sectionBuffer {
+    width: 100%;
+    height: 55px;
+}
+
+.sectionTitle {
+    margin-left: 2.5%;
+    margin-bottom: 0.5%;
+}
+
+.sectionLine {
+    height: 5px;
+    width: 95%;
+    background-color: var(--secondary-color);
+    margin-left: 2.5%;
+    border-radius: 2.5px;
+}
+
+.par {
+    margin-left: 2.5%;
+    width: 95%;
+    text-align: justify;
+}
+
+.chartBox {
+    position: relative;
+    width: 90vw;
+    justify-self: center;
+    margin-top: 2%;
+    height: fit-content;
+    border: 3px black solid;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--tertiary-color);
+}
+
+#controlbar-button {
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    z-index: 3;
+}
+
+#map {
+    width: 100%;
+    height: 90vw;
+    border-bottom: black 1px solid;
+}
+
+select {
+    border-radius: 5px;
+    width: 90%;
+    height: 2rem;
+    text-align: center;
+}
+
+#selectCB {
+    margin-top: 2.5%;
+}
+
+#legendMap {
+    width: 95%;
+    margin-top: 1%;
+    height: fit-content;
+    display: flex;
+    align-items: baseline;
+}
+
+.titleCB {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    margin-top: 2%;
+}
+
+#chartLink {
+    width: 100%;
+    justify-items: center;
+}
+
+#barChartTitle {
+    width: 100%;
+    margin-top: 5%;
+    text-align: center;
+}
+
+#barChartRegion {
+    width: 75vw;
+    height: 75vw;
+    min-height: fit-content;
+}
+
+button {
+    min-width: fit-content;
+    width: 20%;
+    height: 1.5rem;
+    border-radius: 0.75rem;
+    font-family: var(--font-primary);
+    cursor: pointer;
+    background-color: var(--tertiary-color);
+
+}
+
+button:hover {
+    background-color: var(--tertiary-color40);
+}
+
+#regionLink {
+    justify-content: center;
+    margin-bottom: 2%;
+}
+
+.sectionBreak {
+    width: 100%;
+    height: fit-content;
+    margin-top: 5%;
+    background-color: var(--primary-color160);
+    align-content: center;
+    text-align: center;
+    color: white;
+}
+
+.legendBox {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 5px;
+    border-radius: 0.25rem;
+}
+
+.legendCat {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+#BCClegend {
+    display: flex;
+    width: 10%;
+    min-width: fit-content;
+    height: 10%;
+    align-self: center;
+    margin-top: -2.5%;
+}
+
+#barChartCluster {
+    width: 100%;
+    height: 90%;
+}
+
+#control {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: var(--tertiary-color);
+}
+
+.menuButton {
+    display: flex;
+    min-width: fit-content;
+    width: fit-content;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    min-height: fit-content;
+}
+
+#buttonCB {
+    position: absolute;
+    z-index: 5;
+    top: 2.5%;
+    right: 2.5%;
+}
+
+fieldset {
+    border: none;
+}
+
+#close {
+    position: absolute;
+    z-index: 5;
+    top: 2.5%;
+    left: 2.5%;
+}
+
+#regionalCTA {
+    width: 100%;
+    min-height: fit-content;
+    height: 120vw;
+    margin-top: 2.5%;
+    position: relative;
+    color: white;
+}
+
+#reg-image-container {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+}
+
+#reg-image {
+    height: 80%;
+    width: auto;
+    object-fit: cover;
+    position: relative;
+    filter: brightness(60%);
+    z-index: -3;
+}
+
+#bg-color {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: var(--primary-color40);
+    opacity: 20%;
+    z-index: -2;
+}
+
+#vector6 {
+    height: 85%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+}
+
+#titleCTA {
+    margin-left: 2.5%;
+    padding-top: 30%;
+    width: 30%;
+}
+
+.whiteList {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 5%;
+    color: white;
+}
+
+.whiteList li {
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.whiteList li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+}
+
+.buttonCTA {
+    background-color: var(--secondary-color);
+    font-size: clamp(1.5rem, 2vw, 1.75rem);
+    height: fit-content;
+    font-weight: 400;
+}
+
+.buttonCTA:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: var(--secondary-color80);
+}
+
+#buttonRegCTA {
+    margin-left: 5%;
+    margin-bottom: 2.5%;
+}
+
+footer {
+    width: 97.5%;
+    height: fit-content;
+    margin-top: -10%;
+    padding-left: 2.5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: var(--primary-color);
+    color: white;
+}

@@ -27,8 +27,8 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- Local  -->
-    <script type="module" src="app4.js" async></script>
-    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="app-mobile.js" async></script>
+    <link rel="stylesheet" href="styles-mobile.css">
 
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,73 +38,71 @@
         rel="stylesheet">
 </head>
 
-<body style="margin: 0;">
+<body>
     <header role="banner">
-        <h1>M</h1>
+        <button id="menu-button">
+            <img src="assets/menu1.svg" id="menu-icon">
+        </button>
         <p>By Albert Busca</p>
     </header>
-    <nav role="navigation">
-        <a>Introduction</a>
-        <a>Map</a>
-        <a>Cluster Charts</a>
-    </nav>
     <section id="heroSection">
-        <img src="assets/bg-image.jpg" id="bg-image">
-        <div id="heroBackground">
-            <img src="assets/Vector 1.svg" id="vector1" class="vector">
-            <div id="heroBuffer"></div>
-            <img src="assets/Vector 2.svg" id="vector2" class="vector">
+        <div id="image-container">
+            <img src="assets/bg-image.jpg" id="bg-image">
         </div>
-        <h1 id="titleHero">EU-SPI Interactive Tools</h1>
+        <div id="heroBackground">
+            <img src="assets/Vector 4.svg" id="vector4" class="vector">
+            <div id="heroBuffer"></div>
+            <img src="assets/Vector 5.svg" id="vector5" class="vector">
+        </div>
+        <h2 id="titleHero">EU-SPI Interactive Tools</h2>
         <p id="parHero">Fostering data-driven decision for public policy makers and stakeholders</p>
-        <h1 id="titleHeroSection">About this page</h1>
-        <p id="parHeroSection">Scroll down to find various interactive tools based on the European Social Progress Index
-            by the European Commission. This tools and data are the result of a published paper authored by Albert Busca
-            and Albert Carreras that can be found here. We believe this page can be useful in understanding the findings
-            of the paper and to inform public policies with data, alongside helping to see social progress in a more
-            holistic manner.</p>
+        <h2 id="titleHeroSection">About this page</h2>
+        <p class="par" id="parHeroSection">Scroll down to find various interactive tools based on the European Social
+            Progress Index by the European Commission. This tools and data are the result of a published paper authored
+            by Albert Busca and Albert Carreras that can be found here. We believe this page can be useful in
+            understanding the findings of the paper and to inform public policies with data, alongside helping to see
+            social progress in a more holistic manner.</p>
     </section>
-    <section>
+    <section style="position: relative;">
         <div id="sectionBuffer"></div>
         <h1 class="sectionTitle">Interactive Map</h1>
         <div class="sectionLine"></div>
-        <p style="margin-left: 2.5%;">Select a region by clicking it on the map or change the variable to display. Click
-            on the button at the bottom of the control bar to know more information about the selected region.</p>
+        <p class="par">Select a region by clicking it on the map. Click on the menu to change the variable displayed.
+            See below for
+            more information on the region.</p>
         <div class="chartBox" id="controlMap">
             <div id="map" role="application" aria-label="Interactive EU-SPI map at NUTS-2"></div>
-            <aside class="control" aria-labelledby="titleCB">
-                <h1 class="titleCB">Control Bar</h1>
-                <select id="selectCB">
-                    <optgroup label="Cluster Analysis">
-                        <option value="cluster">Cluster Membership</option>
-                    </optgroup>
-                    <optgroup label="Factors">
-                        <option value="ML1">Health (Factor 1)</option>
-                        <option value="ML2">Freedom and Housing (Factor 2)</option>
-                        <option value="ML3">Basic Education (Factor 3)</option>
-                        <option value="ML4">Socio-environmental Quality (Factor 4)</option>
-                    </optgroup>
-                    <optgroup label="Components">
-                        <option value="Nutrition.and.Basic.Medical.Care">Nutrition and Basic Medical Care</option>
-                        <option value="Water.and.Sanitation">Water and Sanitation</option>
-                        <option value="Shelter">Shelter</option>
-                        <option value="Personal.Security">Personal Security</option>
-                        <option value="Access.to.Basic.Knowledge">Access to Basic Knowledge</option>
-                        <option value="Access.to.ICT">Access to ICT</option>
-                        <option value="Health.and.Wellness">Health and Wellness</option>
-                        <option value="Environmental.Quality">Environmental Quality</option>
-                        <option value="Personal.Rights">Personal Rights</option>
-                        <option value="Personal.Freedom.and.Choice">Personal Freedom and Choice</option>
-                        <option value="Tolerance.and.Inclusion">Tolerance and Inclusion</option>
-                        <option value="Access.to.Advanced.Education">Access to Advanced Education</option>
-                    </optgroup>
-                </select>
-                <p class="pCB" id="barChartTitle">Component values for Burgenland</p>
-                <div id="barChartRegion"></div>
-                <p class="pCB">Legend:</p>
-                <div id="legendMap"></div>
-                <button id="regionLink">Detailed information for AT11</button>
-            </aside>
+            <select id="selectCB">
+                <optgroup label="Cluster Analysis">
+                    <option value="cluster">Cluster Membership</option>
+                </optgroup>
+                <optgroup label="Factors">
+                    <option value="ML1">Health (Factor 1)</option>
+                    <option value="ML2">Freedom and Housing (Factor 2)</option>
+                    <option value="ML3">Basic Education (Factor 3)</option>
+                    <option value="ML4">Socio-environmental Quality (Factor 4)</option>
+                </optgroup>
+                <optgroup label="Components">
+                    <option value="Nutrition.and.Basic.Medical.Care">Nutrition and Basic Medical Care</option>
+                    <option value="Water.and.Sanitation">Water and Sanitation</option>
+                    <option value="Shelter">Shelter</option>
+                    <option value="Personal.Security">Personal Security</option>
+                    <option value="Access.to.Basic.Knowledge">Access to Basic Knowledge</option>
+                    <option value="Access.to.ICT">Access to ICT</option>
+                    <option value="Health.and.Wellness">Health and Wellness</option>
+                    <option value="Environmental.Quality">Environmental Quality</option>
+                    <option value="Personal.Rights">Personal Rights</option>
+                    <option value="Personal.Freedom.and.Choice">Personal Freedom and Choice</option>
+                    <option value="Tolerance.and.Inclusion">Tolerance and Inclusion</option>
+                    <option value="Access.to.Advanced.Education">Access to Advanced Education</option>
+                </optgroup>
+            </select>
+            <div id="legendMap"></div>
+        </div>
+        <div id="chartLink">
+            <p id="barChartTitle">Component values for Burgenland</p>
+            <div id="barChartRegion"></div>
+            <button id="regionLink">Detailed information for AT11</button>
         </div>
     </section>
     <div class="sectionBreak">
@@ -114,7 +112,6 @@
         <h1 class="sectionTitle">Mean values by component</h1>
         <div class="sectionLine"></div>
         <div class="chartBox">
-            <div id="barChartCluster"></div>
             <aside id="BCClegend">
                 <div class="legendCat">
                     <div class="legendBox" style="background-color: #FE6162;"></div>
@@ -125,14 +122,21 @@
                     <p>Cluster 2</p>
                 </div>
             </aside>
+            <div id="barChartCluster"></div>
         </div>
     </section>
     <section>
         <h1 class="sectionTitle" id="boxPlotTitle">Distribution of Health (Factor 1) by Cluster</h1>
         <div class="sectionLine"></div>
         <div class="chartBox">
+            <button class="menuButton" id="buttonCB">
+                <img src="assets/controlbar.svg">
+            </button>
             <div id="boxPlotCluster"></div>
-            <aside class="control">
+            <aside id="control">
+                <button class="menuButton" id="close">
+                    <img src="assets/close.svg">
+                </button>
                 <h1 class="titleCB">Control Bar</h1>
                 <select id="propertySelectBoxPlot">
                     <optgroup label="Factors">
@@ -189,42 +193,31 @@
                         </select>
                     </div>
                 </fieldset>
-                <div style="width: 100%;">
-                    <p style="text-align: center;">Legend</p>
-                    <div style="display: flex; gap: 5%; justify-content: center;">
-                        <div class="legendCat">
-                            <div class="legendBox" style="background-color: #FE6162;"></div>
-                            <p class="source-sans-regular">Cluster 1</p>
-                        </div>
-                        <div class="legendCat">
-                            <div class="legendBox" style="background-color: #6467FE;"></div>
-                            <p class="source-sans-regular">Cluster 2</p>
-                        </div>
-                    </div>
-                </div>
             </aside>
         </div>
     </section>
     <section id="regionalCTA">
-        <img src="assets/region-image.jpg" id="region-image">
-        <div id="bg-color"></div>
-        <img src="assets/Vector 3.svg" id="vector3">
-        <h1 id="titleCTA">Regional Data</h1>
+        <div id="reg-image-container">
+            <img src="assets/region-image.jpg" id="reg-image">
+            <div id="bg-color"></div>
+        </div>
+        <img src="assets/Vector 6.svg" id="vector6">
+        <h2 id="titleCTA">Regional Data</h2>
         <ul class="whiteList">
             <li>
-                <h2>Detailed insights</h2>
+                <h3>Detailed insights</h3>
             </li>
             <li>
-                <h2>Compare regions</h2>
+                <h3>Compare regions</h3>
             </li>
             <li>
-                <h2>Understand patterns</h2>
+                <h3>Understand patterns</h3>
             </li>
         </ul>
         <button class="buttonCTA" id="buttonRegCTA">Go to regional data</button>
     </section>
     <footer>
-        <h1>Data Sources:</h1>
+        <h2>Data Sources:</h2>
         <ul class="whiteList">
             <li>
                 <h3>EU-SPI data attributed to the European Commission. Original data can be found here under CC BY 4.0.
@@ -239,4 +232,5 @@
         </ul>
     </footer>
 </body>
+
 </html>

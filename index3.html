@@ -15,8 +15,8 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <!-- Proj4 and Proj4leaflet -->
-    <script src="libs/proj4.js" defer></script>
-    <script src="libs/proj4leaflet.js" defer></script>
+    <script src="node_modules\proj4\dist\proj4.js" defer></script>
+    <script src="node_modules\proj4leaflet\src\proj4leaflet.js" defer></script>
 
     <!-- Plotly -->
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
@@ -40,7 +40,7 @@
 
 <body style="margin: 0;">
     <header role="banner">
-        <h1>M</h1>
+        <h1>EU-SPI Interactive Tools</h1>
         <p>By Albert Busca</p>
     </header>
     <nav role="navigation">
@@ -128,7 +128,7 @@
         </div>
     </section>
     <section>
-        <h1 class="sectionTitle" id="boxPlotTitle">Distribution of Health (Factor 1) by Cluster</h1>
+        <h1 class="sectionTitle">Distribution of Health (Factor 1) by Cluster</h1>
         <div class="sectionLine"></div>
         <div class="chartBox">
             <div id="boxPlotCluster"></div>
@@ -222,6 +222,7 @@
             </li>
         </ul>
         <button class="buttonCTA" id="buttonRegCTA">Go to regional data</button>
+
     </section>
     <footer>
         <h1>Data Sources:</h1>
