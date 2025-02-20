@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clustering EU-SPI (Interactive Data)</title>
+    <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -40,13 +41,13 @@
 
 <body style="margin: 0;">
     <header role="banner">
-        <h1>M</h1>
+        <h1>Clustering EU-SPI</h1>
         <p>By Albert Busca</p>
     </header>
     <nav role="navigation">
-        <a>Introduction</a>
-        <a>Map</a>
-        <a>Cluster Charts</a>
+        <a href="#heroSection" class="navLink">Introduction</a>
+        <a href="#mapSection" class="navLink">Map</a>
+        <a href="#clusterGraphs" class="navLink">Cluster Charts</a>
     </nav>
     <section id="heroSection">
         <img src="assets/bg-image.jpg" id="bg-image">
@@ -55,18 +56,23 @@
             <div id="heroBuffer"></div>
             <img src="assets/Vector 2.svg" id="vector2" class="vector">
         </div>
-        <h1 id="titleHero">EU-SPI Interactive Tools</h1>
-        <p id="parHero">Fostering data-driven decision for public policy makers and stakeholders</p>
-        <h1 id="titleHeroSection">About this page</h1>
-        <p id="parHeroSection">Scroll down to find various interactive tools based on the European Social Progress Index
-            by the European Commission. This tools and data are the result of a published paper authored by Albert Busca
-            and Albert Carreras that can be found here. We believe this page can be useful in understanding the findings
-            of the paper and to inform public policies with data, alongside helping to see social progress in a more
-            holistic manner.</p>
+        <div id="textHero">
+            <h1 id="titleHero">EU-SPI Interactive Tools</h1>
+            <p id="parHero">Fostering data-driven decision for public policy makers and stakeholders</p>
+            <h1 id="titleHeroSection">About this page</h1>
+            <p id="parHeroSection">Scroll down to find various interactive tools based on the European Social Progress
+                Index
+                by the European Commission. This tools and data are the result of a published paper authored by Albert
+                Busca
+                and Albert Carreras that can be found here. We believe this page can be useful in understanding the
+                findings
+                of the paper and to inform public policies with data, alongside helping to see social progress in a more
+                holistic manner.</p>
+        </div>
     </section>
     <section>
         <div id="sectionBuffer"></div>
-        <h1 class="sectionTitle">Interactive Map</h1>
+        <h1 class="sectionTitle" id="mapSection">Interactive Map</h1>
         <div class="sectionLine"></div>
         <p style="margin-left: 2.5%;">Select a region by clicking it on the map or change the variable to display. Click
             on the button at the bottom of the control bar to know more information about the selected region.</p>
@@ -107,7 +113,7 @@
             </aside>
         </div>
     </section>
-    <div class="sectionBreak">
+    <div class="sectionBreak" id="clusterGraphs">
         <h1>Cluster Profile</h1>
     </div>
     <section>
@@ -227,16 +233,24 @@
         <h1>Data Sources:</h1>
         <ul class="whiteList">
             <li>
-                <h3>EU-SPI data attributed to the European Commission. Original data can be found here under CC BY 4.0.
+                <h3>EU-SPI data attributed to the European Commission. Original data can be found
+                    <a href="https://ec.europa.eu/regional_policy/information-sources/maps/social-progress/2020_en"
+                        class="footerLink" target="_blank">here</a> under CC BY 4.0.
                 </h3>
             </li>
             <li>
-                <h3>Geographical data attributed to GISCO. Original data can be found here under CC BY 4.0.</h3>
+                <h3>Geographical data attributed to GISCO. Original data can be found
+                    <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics"
+                        class="footerLink" target="_blank">here</a> under CC BY 4.0.
+                </h3>
             </li>
             <li>
-                <h3>GDP data attributed to EUROSTAT. Original data can be found here under CC BT 4.0.</h3>
+                <h3>GDP data attributed to EUROSTAT. Original data can be found <a
+                        href="https://ec.europa.eu/eurostat/databrowser/bookmark/fcac5775-8bd4-4885-ae67-472ae4924f82?lang=en"
+                        class="footerLink" target="_blank">here</a> under CC BT 4.0.</h3>
             </li>
         </ul>
     </footer>
 </body>
+
 </html>

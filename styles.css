@@ -62,6 +62,11 @@ nav {
     padding-left: 10%;
 }
 
+.navLink {
+    text-decoration: none;
+    color: black;
+}
+
 #heroSection {
     position: relative;
     padding-top: 30%;
@@ -358,6 +363,14 @@ footer {
     color: white;
 }
 
+.footerLink {
+    color: white;
+}
+
+.footerLink:hover {
+    color: var(--secondary-color80);
+}
+
 /* Region Page only styles */
 
 #regionMap {
@@ -425,7 +438,7 @@ footer {
 }
 
 #chartMenu {
-    margin-top: 7.5%;
+    margin-top: 12.5%;
     margin-left: 2.5%;
     border-bottom: var(--tertiary-color40) solid 2px;
     display: flex;

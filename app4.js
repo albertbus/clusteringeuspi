@@ -521,14 +521,17 @@ function adjustHeight() {
     const vector1 = parseFloat(window.getComputedStyle(document.getElementById("vector1")).height);
     const vector2 = parseFloat(window.getComputedStyle(document.getElementById("vector2")).height);
     const section = parseFloat(window.getComputedStyle(document.getElementById("heroSection")).height);
+    const heroBg = parseFloat(window.getComputedStyle(document.getElementById("heroBackground")).height);
+    const textHero = parseFloat(window.getComputedStyle(document.getElementById("textHero")).height);
     const targetElement = document.getElementById("heroBuffer");
-    console.log(vector1, vector2, section)
-    let targetHeight = section - ((vector1 * 0.75) + vector2);
+    let targetHeight = section - ((vector1 * 0.6) + vector2);
+    console.log("Vector 1 is", vector1, "Vector 2 is", vector2, "Section is", section)
     console.log(targetHeight)
     if (targetHeight < 0) { targetElement.style.height = 0 + "px"; }
     else { targetElement.style.height = (targetHeight + 20) + "px"; }
 
-    document.getElementById("sectionBuffer").style.height = vector1 * 0.30 + "px";
+    console.log("HeroBG:", heroBg);
+    document.getElementById("sectionBuffer").style.height = heroBg - (textHero * 1.5) + "px";
 }
 
 // Run once on initiation
